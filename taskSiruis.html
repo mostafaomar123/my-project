@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <head> 
+        <meta charset="UTF-8">
+        <title>TASK SIRUIS </title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div class="header">
+            <h1>Select your proudect</h1>
+            <p id="dark-mode" onclick="darkMode()">Dark Mode</p>
+        </div>
+        <div class="nav-bar">
+            <input id="search-input" type="text" placeholder="Search for products" onkeyup="search(this)">
+            <select id="category" onchange="selectFilter(this)">
+                <option>All Products</option>
+            </select>
+        </div>
+        <script src="myscript.js"></script>
+    </body>
+</html>
