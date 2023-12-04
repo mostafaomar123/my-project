@@ -3,6 +3,7 @@
     text-align: center;
     box-sizing: border-box;
     font-family:sans-serif;
+    background-color :red;
 }
 .dark-mode{
     color: white;
