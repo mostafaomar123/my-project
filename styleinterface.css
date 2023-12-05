@@ -1,29 +1,27 @@
 
 body {
-    background-color: #e2e5f081;
-    width: 95%;
+    background-color: #4e4f5481;
     margin: 0px auto;
 }
-h1 {
-    width: 20%;
-    margin: 40px auto;
-    margin-bottom: 10px;
+.Amazon-logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color:#a1a3ad81;
 }
-#text-face {
-    color: black;
+a {
+    text-decoration: none;
+    color: white;
+}
+#text-page {
     font-size:18px;
-    margin: 15px auto;
-    margin-bottom: 25px;
     text-align: center;
-    font-style:inherit;
     font-family: Arial, sans-serif;
 }
 .fram-box-login{
     background-color:rgba(1000, 1000, 1000, 1);
     width: 390px;
-    height: 440px;
     margin: 0px auto;
-    margin-top: 0px;
     border-style:solid;
     border-radius: 9px;
     border-color: white;
@@ -36,59 +34,32 @@ h1 {
     height: 40px;
     border-style: solid;
     border-radius: 6px;
-    border-color: rgb(182, 172, 172);
-    border-top-width: 1px;
-    border-bottom-width: 1px;
-    border-right-width: 1px;
-    border-left-width: 1px;
 }
 #pass {
     width: 350px;
     height: 40px;
     border-style: solid;
     border-radius: 6px;
-    border-color: rgb(182, 172, 172);
-    border-top-width: 1px;
-    border-bottom-width: 1px;
-    border-right-width: 1px;
-    border-left-width: 1px;
 }
 #login {
 width: 350px;
 height: 40px;
-border-style: solid;
 border-radius: 6px;
-border-color: rgb(182, 172, 172);
-border-top-width: 1px;
-border-bottom-width: 1px;
-border-right-width: 1px;
-border-left-width: 1px;
-background-color:#1877f2;
-font-family:Arial, Helvetica, sans-serif;
+background-color:#54585c;
 color: white;
 font-size:x-large;
 }
 .forgotten-link {
     font-family: Arial,sans-serif;
     font-size:14px;
-    color: #1877f2;
-    font-weight: 500;
-    text-decoration: none;
+    color: #9d9663;
 }
 #create {
-    background-color: #42b72a;
+    background-color: #53c150;
     width: 220px;
     height: 60px;  
     color: white;
-    font-family:Arial, Helvetica, sans-serif;
-    font-size: 17px;
-    border-style: solid;
     border-radius: 6px;
-    border-color: rgb(182, 172, 172);
-    border-top-width: 1px;
-    border-bottom-width: 1px;
-    border-right-width: 1px;
-    border-left-width: 1px;
 }
 .horizontal-line {
     margin: 0 auto;
@@ -104,14 +75,5 @@ font-size:x-large;
     margin-right: 0px;
     position: relative;
     bottom: 35px;
-}
-.footer {
-    text-align: center;
-    text-decoration:none;
-    color: black;
-    font-family: Arial,sans-serif;
-}
-.footer-words {
-    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif ;
 }
 
