@@ -6,7 +6,7 @@
     <meta name="personal page" content="mostafa omar">
     <title>Log in to Amazon</title>
     <link rel="icon" href="icons8-amazon-24.png" type="image/x-icon">
-    <link rel="stylesheet" href="styleinterface.css" type="text/css">
+    <link rel="stylesheet" href="styleInterface.css" type="text/css">
       </head>
       <body>
         <div class="Amazon-logo">
@@ -14,13 +14,13 @@
               <img src="amazon logo.PNG" alt="Amazon.eg">
             </a>
         </div>
-    <div class="fram-box-login"> 
+    <div class="fram-box-login">
         <p id="text-page">Log in to Amazon</p>
         <div class="input-format">
-      <form action="" method="post">
+      <form id="register" action="" method="GET">
         <div class="text-area-fiald">
           <label for="user">
-            <input id="user" type="text" name="user" placeholder="Email address or phone number" required>
+            <input id="user" type="text" name="user" placeholder="Email address or phone number">
           </label>
         </div>
           <br>
@@ -30,9 +30,7 @@
           </label>
           <br>
           <br>
-          <a href="" target="_blank">
-          <input id="login" type="button" value="Log in">
-          </a>
+          <input id="login" type="submit" value="submit" >
         <br>
         <br>
       <div class="forgotten-link">  
@@ -47,13 +45,14 @@
           <span class="horizontal-line">or</span>
         <hr id="line-right">
       </div>
-        <div class="create-button">
-          <a href="" target="_blank">
-        <input id="create" type="button" value="Create new account"> 
-        </a>
-        </div>
-      </form>
+      <div class="create-button">
+        <a href="" target="_blank">
+      <input id="create" type="button" value="Create new account"> 
+      </a>
+      </div>
+    </form>
       </div>
   </div>
+  <script src="javascriptInterface.js"></script>
       </body>
 </html>
