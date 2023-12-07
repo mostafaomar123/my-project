@@ -12,3 +12,4 @@ document.getElementById("register").onsubmit = function () {
     }
     return false;
 };
+console.log("test")
