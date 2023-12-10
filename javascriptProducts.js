@@ -4,7 +4,17 @@ let productsFetcher = (function createResponse() {
   products = null;
   return function () {
     if (products == null) {
-      products = JSON.parse(responseString).products;
+      var xhttp = new XMLHttpRequest();
+      xhttp.open("GET", "https://dummyjson.com/products", true);
+      xhttp.send();
+
+      xhttp.onreadystatechange = function() {
+        if(this.readyState == 4 && this.status == 200) {
+          let responseString = xhttp.responseText;
+          products = JSON.parse(responseString).products;
+        }
+      };
+
     }
     return products;
   };
