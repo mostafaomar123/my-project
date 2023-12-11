@@ -1,13 +1,18 @@
-let productsFetcher = function createResponse() {
-  var xhttp = new XMLHttpRequest();
-  xhttp.open("GET", "https://dummyjson.com/products", false);
-  xhttp.send();
-  products = null;
-    if (products == null) {
-      products = JSON.parse(xhttp.responseText).products;
-      return products;
-    }
-  };
+
+var xhttp = new XMLHttpRequest();
+xhttp.open("GET", "https://dummyjson.com/products");
+xhttp.send();
+xhttp.onreadystatechange = function () {
+  if (this.readyState == 4 && this.status == 200 ) {
+    let responseString = xhttp.responseText;
+    productsFetcher(responseString);
+  }
+}
+function productsFetcher(responseString) {
+  let products = JSON.parse(responseString).products;
+  createPage(products);
+  return products;
+};
 function createProductsDiv() {
   let divProducts = document.createElement("div");
   divProducts.setAttribute("class", "products");
@@ -51,9 +56,6 @@ function createCardDiv(product) {
   function addImagesLinks() {
     let ul = document.createElement("ul");
     let images = product.images;
-    // let test = Array.from(Object.entries(product)).filter(
-    //   (el) => el[0] == "images");
-    // console.log(test)
     images.forEach((item) => {
       let li = document.createElement("li");
       let a = document.createElement("a");
@@ -68,16 +70,16 @@ function createCardDiv(product) {
   addImagesLinks();
   return classCard;
 }
-function createPage() {
+function createPage(products) {
   let resultProducts = createProductsDiv();
-  let products = productsFetcher();
+  // let products = productsFetcher();
   for (let i in products) {
     resultProducts.appendChild(createCardDiv(products[i]));
   }
-  filter();
+  filter(products);
   document.body.appendChild(resultProducts);
 }
-createPage();
+
 function search(e) {
   let searchValue = e.value;
   let classCard = document.querySelectorAll(".card");
@@ -92,9 +94,9 @@ function search(e) {
     }
   }
 }
-function filter() {
+function filter(products) {
   let categories = Array.from(
-    new Set(productsFetcher().map((el) => el.category))
+    new Set(products.map((el) => el.category))
   );
   let select = document.getElementById("category");
   categories.forEach((ele) => {
@@ -123,3 +125,18 @@ function selectFilter(e) {
 function darkMode() {
   document.body.classList.toggle("dark-mode");
 }
+// xhtp = new XMLHttpRequest();
+// xhtp.open("GET", "https://dummyjson.com/products");
+// xhtp.send();
+// xhtp.onreadystatechange = function () {
+//   if (this.readyState == 4 && this.status == 200) {
+//     let responseString = xhtp.responseText;
+//     products = JSON.parse(responseString).products;
+//     test(products)
+//     console.log("hi")
+//   }
+// };
+// function test (products){
+//   let h1 = document.getElementById("demo");
+//   h1.innerHTML = products[0].category;
+// }
