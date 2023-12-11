@@ -72,7 +72,6 @@ function createCardDiv(product) {
 }
 function createPage(products) {
   let resultProducts = createProductsDiv();
-  // let products = productsFetcher();
   for (let i in products) {
     resultProducts.appendChild(createCardDiv(products[i]));
   }
@@ -125,18 +124,5 @@ function selectFilter(e) {
 function darkMode() {
   document.body.classList.toggle("dark-mode");
 }
-// xhtp = new XMLHttpRequest();
-// xhtp.open("GET", "https://dummyjson.com/products");
-// xhtp.send();
-// xhtp.onreadystatechange = function () {
-//   if (this.readyState == 4 && this.status == 200) {
-//     let responseString = xhtp.responseText;
-//     products = JSON.parse(responseString).products;
-//     test(products)
-//     console.log("hi")
-//   }
-// };
-// function test (products){
-//   let h1 = document.getElementById("demo");
-//   h1.innerHTML = products[0].category;
-// }
+
+
