@@ -1,13 +1,17 @@
-
-var xhttp = new XMLHttpRequest();
-xhttp.open("GET", "https://dummyjson.com/products");
-xhttp.send();
-xhttp.onreadystatechange = function () {
-  if (this.readyState == 4 && this.status == 200 ) {
-    let responseString = xhttp.responseText;
-    productsFetcher(responseString);
+const createRequest = (function () {
+  let xhttp = new XMLHttpRequest();
+  xhttp.open("GET", "https://dummyjson.com/products");
+  xhttp.send();
+  return function (){
+    xhttp.onreadystatechange = function () {
+      if (this.readyState == 4 && this.status == 200) {
+        let responseString = xhttp.responseText;
+        productsFetcher(responseString);
+      }
+    };
   }
-}
+})();
+createRequest()
 function productsFetcher(responseString) {
   let products = JSON.parse(responseString).products;
   createPage(products);
