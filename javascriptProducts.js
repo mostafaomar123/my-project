@@ -1,22 +1,24 @@
 const createRequest = (function () {
-  let xhttp = new XMLHttpRequest();
-  xhttp.open("GET", "https://dummyjson.com/products");
-  xhttp.send();
   return function (){
-    xhttp.onreadystatechange = function () {
-      if (this.readyState == 4 && this.status == 200) {
-        let responseString = xhttp.responseText;
-        productsFetcher(responseString);
-      }
-    };
+    return new Promise((resolve, reject) => {
+      let xhttp = new XMLHttpRequest();
+      xhttp.onload = function () {
+        if (this.readyState === 4 && this.status === 200) {
+          resolve(JSON.parse(this.responseText).products);
+        } else {
+          reject(Error("Data Not Found "));
+        }
+      };
+      xhttp.open("GET", "https://dummyjson.com/products");
+      xhttp.send();
+    });
   }
 })();
-createRequest()
-function productsFetcher(responseString) {
-  let products = JSON.parse(responseString).products;
+createRequest().then((products) => {
   createPage(products);
-  return products;
-};
+}).catch((rejectReason) => {
+  console.log(rejectReason)
+})
 function createProductsDiv() {
   let divProducts = document.createElement("div");
   divProducts.setAttribute("class", "products");
@@ -31,7 +33,6 @@ function createCardDiv(product) {
   let title = document.createElement("h4");
   title.innerHTML = product["title"];
   classCard.appendChild(title);
-
   function informationCard() {
     let elements = document.createElement("dl");
     let entries = Array.from(Object.entries(product)).filter(
@@ -98,9 +99,7 @@ function search(e) {
   }
 }
 function filter(products) {
-  let categories = Array.from(
-    new Set(products.map((el) => el.category))
-  );
+  let categories = Array.from(new Set(products.map((el) => el.category)));
   let select = document.getElementById("category");
   categories.forEach((ele) => {
     let option = document.createElement("option");
@@ -128,5 +127,3 @@ function selectFilter(e) {
 function darkMode() {
   document.body.classList.toggle("dark-mode");
 }
-
-
