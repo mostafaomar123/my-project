@@ -1,24 +1,17 @@
 const createRequest = (function () {
-  return function (){
-    return new Promise((resolve, reject) => {
-      let xhttp = new XMLHttpRequest();
-      xhttp.onload = function () {
-        if (this.readyState === 4 && this.status === 200) {
-          resolve(JSON.parse(this.responseText).products);
-        } else {
-          reject(Error("Data Not Found "));
-        }
-      };
-      xhttp.open("GET", "https://dummyjson.com/products");
-      xhttp.send();
-    });
-  }
+  return function () {
+    fetch("https://dummyjson.com/products")
+      .then((respons) => {
+        myData = respons.json();
+        return myData;
+      })
+      .then((myData) => {
+        let products = myData.products;
+        createPage(products);
+      });
+  };
 })();
-createRequest().then((products) => {
-  createPage(products);
-}).catch((rejectReason) => {
-  console.log(rejectReason)
-})
+createRequest()
 function createProductsDiv() {
   let divProducts = document.createElement("div");
   divProducts.setAttribute("class", "products");
