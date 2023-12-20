@@ -11,7 +11,7 @@ const createRequest = (function () {
       });
   };
 })();
-createRequest()
+createRequest();
 function createProductsDiv() {
   let divProducts = document.createElement("div");
   divProducts.setAttribute("class", "products");
@@ -120,3 +120,4 @@ function selectFilter(e) {
 function darkMode() {
   document.body.classList.toggle("dark-mode");
 }
+console.log("testing");
