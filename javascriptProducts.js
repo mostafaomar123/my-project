@@ -1,14 +1,8 @@
 const createRequest = (function () {
-  return function () {
-    fetch("https://dummyjson.com/products")
-      .then((respons) => {
-        myData = respons.json();
-        return myData;
-      })
-      .then((myData) => {
-        let products = myData.products;
-        createPage(products);
-      });
+  return async function () {
+    let respons = await fetch("https://dummyjson.com/products")
+    let products = await respons.json();
+    createPage(products.products)
   };
 })();
 createRequest();
@@ -70,8 +64,8 @@ function createCardDiv(product) {
 }
 function createPage(products) {
   let resultProducts = createProductsDiv();
-  for (let i in products) {
-    resultProducts.appendChild(createCardDiv(products[i]));
+  for (let product of products) {
+    resultProducts.appendChild(createCardDiv(product));
   }
   filter(products);
   document.body.appendChild(resultProducts);
@@ -120,4 +114,4 @@ function selectFilter(e) {
 function darkMode() {
   document.body.classList.toggle("dark-mode");
 }
-console.log("testing");
+
